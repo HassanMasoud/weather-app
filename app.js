@@ -1,6 +1,10 @@
 let lat;
 let long;
 
+let locationTimezone = document.querySelector(".location-timezone");
+let temperatureDegrees = document.querySelector(".temperature-degrees");
+let temperatureDescription = document.querySelector(".temperature-description");
+
 if (navigator && navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     function (position) {
@@ -18,13 +22,15 @@ if (navigator && navigator.geolocation) {
           const { timezone } = data;
           const { temp } = data.current;
           const { description } = data.current.weather[0];
-          console.log(temp);
-          console.log(description);
-          console.log(timezone);
+
+          locationTimezone.textContent = timezone;
+          temperatureDegrees.textContent = temp;
+          temperatureDescription.textContent = description;
         });
     },
     function (error) {
       console.log(error);
-    }
+    },
+    { timeout: 5000 }
   );
 }
