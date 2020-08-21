@@ -18,7 +18,6 @@ if (navigator && navigator.geolocation) {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
           const { timezone } = data;
           const { temp } = data.current;
           const { description } = data.current.weather[0];
