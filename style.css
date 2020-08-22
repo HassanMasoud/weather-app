@@ -24,8 +24,11 @@ body {
   align-items: center;
 }
 
-.temperature {
+.temperature-section {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .degrees-section {
@@ -40,4 +43,8 @@ body {
 
 .degrees-section h2 {
   font-size: 40px;
+}
+
+.temperature-description {
+  margin-top: 10px;
 }
