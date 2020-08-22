@@ -2,6 +2,8 @@ let lat;
 let long;
 
 let locationTimezone = document.querySelector(".location-timezone");
+let temperatureSection = document.querySelector(".temperature-section");
+let temperatureUnit = document.querySelector(".temperature-section .unit");
 let temperatureDegrees = document.querySelector(".temperature-degrees");
 let temperatureDescription = document.querySelector(".temperature-description");
 let weatherIcon = document.querySelector(".icon");
@@ -28,6 +30,14 @@ if (navigator && navigator.geolocation) {
           temperatureDegrees.textContent = temp;
           temperatureDescription.textContent = description;
           weatherIcon.setAttribute("src", iconUrl);
+
+          temperatureSection.addEventListener("click", () => {
+            if (temperatureUnit.innerText === "C") {
+              temperatureUnit.textContent = "F";
+            } else {
+              temperatureUnit.textContent = "C";
+            }
+          });
         });
     },
     function (error) {
