@@ -31,11 +31,15 @@ if (navigator && navigator.geolocation) {
           temperatureDescription.textContent = description;
           weatherIcon.setAttribute("src", iconUrl);
 
+          let fahrenheit = (temp * 1.8 + 32).toFixed(2);
+
           temperatureSection.addEventListener("click", () => {
             if (temperatureUnit.innerText === "C") {
               temperatureUnit.textContent = "F";
+              temperatureDegrees.textContent = fahrenheit;
             } else {
               temperatureUnit.textContent = "C";
+              temperatureDegrees.textContent = temp;
             }
           });
         });
