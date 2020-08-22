@@ -4,6 +4,7 @@ let long;
 let locationTimezone = document.querySelector(".location-timezone");
 let temperatureDegrees = document.querySelector(".temperature-degrees");
 let temperatureDescription = document.querySelector(".temperature-description");
+let weatherIcon = document.querySelector(".icon");
 
 if (navigator && navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
@@ -20,11 +21,13 @@ if (navigator && navigator.geolocation) {
         .then((data) => {
           const { timezone } = data;
           const { temp } = data.current;
-          const { description } = data.current.weather[0];
+          const { description, icon } = data.current.weather[0];
+          const iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
 
           locationTimezone.textContent = timezone;
           temperatureDegrees.textContent = temp;
           temperatureDescription.textContent = description;
+          weatherIcon.setAttribute("src", iconUrl);
         });
     },
     function (error) {
